@@ -26,21 +26,27 @@ Autre possibilité : Reconnaissance de facial feature du dataset CelebA
 
  ## Introduction
  
-
+Enjeu économique ou pratique : blablabla
  
  ## Etat de l'art
  
+ Tout le monde l'a déjà fait on essaye de comprendre comment ca marche et d'avoir des bons résultats
  
  ## Approche
  
+ Choix du modele, des poids, du dataset, sorties attendues, metrique, score
  
  ## Experimentations
  
+ Ajouter de plus en plus d'optimisations, graphes et tableaux
  
  ## Conclusions
  
+ On a bien progressé et taffé, on est plus fort avec ce modèle parce que ca, 
+ on pourrait améliorer avec tel truc, des bonnes données c'est bien, 
+ et on a pas fait ca c'est notre limite
  
  ## References
  
- 
+ Un max
  
