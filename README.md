@@ -1,28 +1,24 @@
 # Projet-Deep Learning
-Etude du [dataset MNIST Fashion de Zalando]((https://github.com/zalandoresearch/fashion-mnist)) par du deep Learning
-Autre possibilité : Etude du dataset [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
- 
+Etude des gan avec le [dataset MNIST Fashion de Zalando]((https://github.com/zalandoresearch/fashion-mnist))
+
  ## Abstract
 
-Les membres de la communauté des data scientists commencent 
-souvent à apprendre avec le dataset MNIST, composé de chiffres 
-manuscrits, voire l'utilisent comme benchmark pour valider 
-leurs modèles. 
+Les réseaux de neurones
 
-Ce dataset est aujourd'hui sur-utilisé, trop facile et peu 
-représentatif des tâches de CV modernes. L’objectif de cette étude est donc
-de comparer les approches de vision par ordinateur classiques avec 
-des approches dites de deep learning dans le cadre de la classification 
-d’objets issus du dataset MNIST Fashion.
-
-On présentera en particulier les techniques d’augmentation de données
- pour l’utilisation de réseaux profonds, les méthodes
-de deep learning utilisées grâce à cela, les méthodes de vision 
-par ordinateur à l’aide de descripteurs. Les résultats
-obtenus seront présentés et comparés.
-
-
-Autre possibilité : Reconnaissance de facial feature du dataset CelebA
+Les réseaux de neurones génératif sont actuellement
+en plein développement car les jeux de données labelli-
+sés sont encore peu nombreux et demandent beaucoup de
+temps pour être constitués. Nous nous sommes intéressés à
+quelques exemples de réseaux génératifs. Nous avons com-
+mencé par étudier les auto-encodeurs dont le but est de
+reproduire le plus fidèlement possible les données d’en-
+trée. Puis nous nous sommes penchés sur les Generative
+Adversarial Network (GANs). Notre travail a consisté à
+prendre en main des auto-encodeurs sur le jeu de données
+MNIST, puis des GANs d’abord sur MNIST puis sur des
+jeux de lettres manuscrites que nous avons au préalable re-
+travaillés. Nous sommes finalement parvenus à utiliser ces
+réseaux pour générer des chiffres et des lettres manuscrites.
 
  ## Introduction
  
