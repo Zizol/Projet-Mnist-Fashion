@@ -3,6 +3,7 @@
 
 import argparse
 from GAN import GAN
+from InfoGan import infoGAN
 
 
 # Parsing des arguments d'entrée du script
@@ -11,6 +12,7 @@ def parse_args():
     description = "Implémentation Tensorflow d'un GAN"
     parser = argparse.ArgumentParser(description=description)
 
+    parser.add_argument('--gan_type', type=str, default='GAN', choices=['GAN', 'InfoGAN'], help='Le type de GAN à utiliser')
     parser.add_argument('--epoch', type=int, default=2, help="Le nombre d'epoch à lancer")
     parser.add_argument('--dataset', type=str, default='mnist', choices=['mnist', 'fashion-mnist'], help='Le nom du dataset')
     parser.add_argument('--batch_size', type=int, default=64, help='La taille du batch')
@@ -43,57 +45,19 @@ def main():
     args = parse_args()
 
     # Initialisation du generateur
-    gan = GAN(args)
+    if args.gan_type == 'GAN':
+        gan = GAN(args)
+    elif args.gan_type == 'InfoGAN':
+        gan = infoGAN(args)
 
         # Lancer l'entrainement
     gan.train()
     print("Entrainement terminé")
 
         # Visualiser les resultats
-    gan.visualize_results(args.epoch)
     print("Tout est fini")
 
 # Lancement du script
 
 if __name__ == '__main__':
     main()
-
-
-# Données d'entrainement et labels
-## Importer datasets
-
-
-## Afficher quelques images
-
-
-
-# Données de validation
-
-
-
-# Définition du modèle
-
-
-# Loss et optimisation
-
-
-# Metriques
-
-
-# Entrainement
-## Training
-
-
-## Testing
-
-
-# Affichage attendu
-
-
-# Affichage valeurs de test
-
-
-# Performances
-
-
-

@@ -190,10 +190,10 @@ class GAN(object):
                 if ((iter + 1) % 100) == 0:
                     print("Epoch: [%2d] [%4d/%4d] D_loss: %.8f, G_loss: %.8f" %
                           ((epoch + 1), (iter + 1), self.data_loader.dataset.__len__() // self.batch_size, D_loss.item(), G_loss.item()))
-
+                    with torch.no_grad():
+                        self.visualize_results((epoch + 1), (iter + 1))
             self.train_hist['per_epoch_time'].append(time.time() - epoch_start_time)
-            with torch.no_grad():
-                self.visualize_results((epoch+1))
+
 
         # Affiche des données sur le temps d'execution
         self.train_hist['total_time'].append(time.time() - start_time)
@@ -208,7 +208,7 @@ class GAN(object):
         utils.loss_plot(self.train_hist, os.path.join(self.save_dir, self.dataset, self.model_name), self.model_name)
 
     # Visualisation des résultats
-    def visualize_results(self, epoch, fix=True):
+    def visualize_results(self, epoch, iteration, fix=True):
         self.G.eval()
 
         if not os.path.exists(self.result_dir + '/' + self.dataset + '/' + self.model_name):
@@ -233,7 +233,7 @@ class GAN(object):
         # Sauvegarde
         samples = (samples + 1) / 2
         utils.save_images(samples[:image_frame_dim * image_frame_dim, :, :, :], [image_frame_dim, image_frame_dim],
-                          self.result_dir + '/' + self.dataset + '/' + self.model_name + '/' + self.model_name + '_epoch%03d' % epoch + '.png')
+                          self.result_dir + '/' + self.dataset + '/' + self.model_name + '/' + self.model_name + '_epoch%03d' % epoch + '_iter%03d' % iteration + '.png')
 
     # Utilitaire pour sauvegarder les résultats de l'entrainement
     def save(self):
@@ -247,3 +247,9 @@ class GAN(object):
 
         with open(os.path.join(save_dir, self.model_name + '_history.pkl'), 'wb') as f:
             pickle.dump(self.train_hist, f)
+
+    def load(self):
+        save_dir = os.path.join(self.save_dir, self.dataset, self.model_name)
+
+        self.G.load_state_dict(torch.load(os.path.join(save_dir, self.model_name + '_G.pkl')))
+        self.D.load_state_dict(torch.load(os.path.join(save_dir, self.model_name + '_D.pkl')))
