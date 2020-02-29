@@ -183,9 +183,12 @@ class WGAN(object):
         print("Training finish!... save training results")
 
         self.save()
-        utils.generate_animation(self.result_dir + '/' + self.dataset + '/' + self.model_name + '/' + self.model_name,
-                                 self.epoch)
         utils.loss_plot(self.train_hist, os.path.join(self.save_dir, self.dataset, self.model_name), self.model_name)
+        try:
+            utils.generate_animation(self.result_dir + '/' + self.dataset + '/' + self.model_name + '/' + self.model_name,
+                                 self.epoch)
+        except:
+            pass
 
     def visualize_results(self, epoch, iteration, fix=True):
         self.G.eval()
