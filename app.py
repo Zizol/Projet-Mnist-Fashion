@@ -4,6 +4,7 @@
 import argparse
 from GAN import GAN
 from InfoGan import infoGAN
+from WGAN import WGAN
 
 
 # Parsing des arguments d'entrée du script
@@ -12,7 +13,7 @@ def parse_args():
     description = "Implémentation Tensorflow d'un GAN"
     parser = argparse.ArgumentParser(description=description)
 
-    parser.add_argument('--gan_type', type=str, default='GAN', choices=['GAN', 'InfoGAN'], help='Le type de GAN à utiliser')
+    parser.add_argument('--gan_type', type=str, default='GAN', choices=['GAN', 'InfoGAN', 'WGAN'], help='Le type de GAN à utiliser')
     parser.add_argument('--epoch', type=int, default=2, help="Le nombre d'epoch à lancer")
     parser.add_argument('--dataset', type=str, default='mnist', choices=['mnist', 'fashion-mnist'], help='Le nom du dataset')
     parser.add_argument('--batch_size', type=int, default=64, help='La taille du batch')
@@ -47,9 +48,10 @@ def main():
     # Initialisation du generateur
     if args.gan_type == 'GAN':
         gan = GAN(args)
+    elif args.gan_type == 'WGAN':
+        gan = WGAN(args)
     elif args.gan_type == 'InfoGAN':
         gan = infoGAN(args)
-
         # Lancer l'entrainement
     gan.train()
     print("Entrainement terminé")
