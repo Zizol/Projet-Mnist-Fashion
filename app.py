@@ -26,13 +26,13 @@ def parse_args():
 
     ## Verification de la conformité des arguments
 
-    assert args.epoch >= 1, 'epoc doit être plus grand ou égal à 1'
+    assert args.epoch >= 1, 'epoch doit être plus grand ou égal à 1'
     assert args.batch_size >= 1, 'batch size doit être plus grand ou égal à 1'
     assert args.input_size >= 1, 'Taille de l image doit etre plus grand ou égal a 1'
     assert args.lrG <= 1, 'La proportion de poids à être initialement apprise doit être inférieure à 1'
     assert args.lrD <= 1, 'La proportion de poids à être initialement apprise doit être inférieure à 1'
     assert args.beta1 <= 1, 'La baisse pour le premier moment des estimations doit être inférieure à 1'
-    assert args.beta2 <= 1, 'La baisse pour le premier moment des estimations doit être inférieure à 1'
+    assert args.beta2 <= 1, 'La baisse pour le deuxième moment des estimations doit être inférieure à 1'
 
     return args
 
