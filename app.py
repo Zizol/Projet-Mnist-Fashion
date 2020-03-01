@@ -10,7 +10,7 @@ from WGAN import WGAN
 # Parsing des arguments d'entrée du script
 
 def parse_args():
-    description = "Implémentation Tensorflow d'un GAN"
+    description = "Implémentation pytorch d'un GAN"
     parser = argparse.ArgumentParser(description=description)
 
     parser.add_argument('--gan_type', type=str, default='GAN', choices=['GAN', 'InfoGAN', 'WGAN'], help='Le type de GAN à utiliser')
